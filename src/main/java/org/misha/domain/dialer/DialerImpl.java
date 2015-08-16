@@ -25,7 +25,6 @@ public class DialerImpl implements Dialer, Runnable {
         Connection.startConnection(agent, customer, waitingTime);
     }
 
-
     @Override
     public void run() {
         for (; ; ) {
@@ -36,8 +35,7 @@ public class DialerImpl implements Dialer, Runnable {
                     freeAgents = 1;
                 }
             }
-            if(freeAgents == 0) {
-
+            if (freeAgents == 0) {
                 try {
                     Thread.sleep(1);
                 } catch (InterruptedException e) {

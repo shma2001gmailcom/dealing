@@ -44,5 +44,4 @@ public class Connection implements Runnable {
         connect();
     }
 
-
 }

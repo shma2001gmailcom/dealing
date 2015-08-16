@@ -9,9 +9,9 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * author: misha
  * date: 8/15/15 11:19 PM.
- *
+ * <p/>
  * Call Center simulator
- *
+ * <p/>
  * Ought to be thread-safe
  */
 public class CallCenter implements Iterable<Agent> {
@@ -28,7 +28,6 @@ public class CallCenter implements Iterable<Agent> {
     public Iterator<Agent> iterator() {
         return callCenter.iterator();
     }
-
 
     private static class MyAgent implements Agent {
         private final int agentId;
@@ -60,7 +59,9 @@ public class CallCenter implements Iterable<Agent> {
                 freeTime.set(System.currentTimeMillis() - currentFreeTime.get());
             }
             totalTime.set(System.currentTimeMillis() - start);
-            System.err.println("setFree=" + free + "\nuneff rate=" + ((double) (currentFreeTime.get())) / (double)totalTime.get());
+            System.err.println(
+                    "setFree=" + free + "\nuneff rate=" + ((double) (currentFreeTime.get())) / (double) totalTime.get()
+            );
             isFree.set(free);
         }
 

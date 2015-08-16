@@ -8,6 +8,6 @@ import org.misha.domain.customer.Customer;
  * date: 8/15/15 6:56 PM.
  * connects agents and customers
  */
-public interface Dialer extends Runnable{
-   void connect(Agent agent, Customer customer);
+public interface Dialer extends Runnable {
+    void connect(Agent agent, Customer customer);
 }

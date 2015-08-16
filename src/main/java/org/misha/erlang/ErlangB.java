@@ -17,6 +17,7 @@ public class ErlangB {
         double term = 1d;
         for (int i = 0; i < m; ++i) {
             term = 1d + (((double) (1 + i)) / rho) * term;
-        } return 1d / term;
+        }
+        return 1d / term;
     }
 }

@@ -3,7 +3,6 @@ package org.misha.queue;
 import org.misha.queue.produser.consumer.Consumer;
 import org.misha.queue.produser.consumer.Producer;
 
-
 /**
  * Author: mshevelin
  * Date: 2/3/15

@@ -6,10 +6,10 @@ import java.util.Random;
 
 public class ProducerConsumerTest {
 
-
     public static void main(String... args) {
         final BlockingQueueSemaphore<Integer> queue = new BlockingQueueSemaphore<Integer>(11);
         final Producer<Integer> producer = new Producer<Integer>(queue) {
+
             long start = System.currentTimeMillis();
 
             public Integer produce() throws InterruptedException {
@@ -24,6 +24,7 @@ public class ProducerConsumerTest {
             }
         };
         final Consumer<Integer> consumer = new Consumer<Integer>(queue) {
+
             long start = System.currentTimeMillis();
 
             @Override

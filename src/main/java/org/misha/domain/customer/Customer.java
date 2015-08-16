@@ -19,7 +19,6 @@ public class Customer {
         isFree.set(new Random().nextBoolean());//todo ms: add distribution
     }
 
-
     public void takeCall() {
         isFree.set(false);
     }
@@ -37,9 +36,9 @@ public class Customer {
         if (!isBusy) {
             takeCall();
             long callStartTime = System.currentTimeMillis();
-                while (System.currentTimeMillis() - callStartTime < callTimeRule.nextTakeCallTimeout()) {
-                    //do nothing
-                }
+            while (System.currentTimeMillis() - callStartTime < callTimeRule.nextTakeCallTimeout()) {
+                //do nothing
+            }
             hangUp();
         }
     }
@@ -53,6 +52,6 @@ public class Customer {
     }
 
     public String toString() {
-        return "Customer"+hashCode();
+        return "Customer" + hashCode();
     }
 }
