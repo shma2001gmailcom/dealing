@@ -11,7 +11,8 @@ public class ProducerConsumerTest {
         final BlockingQueueSemaphore<Integer> queue = new BlockingQueueSemaphore<Integer>(11);
         final Producer<Integer> producer = new Producer<Integer>(queue) {
             long start = System.currentTimeMillis();
-
+            
+            @Override
             public Integer produce() throws InterruptedException {
                 final int result = new Random().nextInt(11);
                 System.err.println("size=" + queue.size() + " " + "produced=" + result);
