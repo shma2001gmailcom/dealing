@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class ProducerConsumerTest {
 
-
     public static void main(String... args) {
         final BlockingQueueSemaphore<Integer> queue = new BlockingQueueSemaphore<Integer>(11);
         final Producer<Integer> producer = new Producer<Integer>(queue) {
