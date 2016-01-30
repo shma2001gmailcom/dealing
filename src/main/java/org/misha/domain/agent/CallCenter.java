@@ -1,5 +1,7 @@
 package org.misha.domain.agent;
 
+import org.apache.log4j.Logger;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -16,11 +18,11 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class CallCenter implements Iterable<Agent> {
     private final List<Agent> callCenter = new CopyOnWriteArrayList<Agent>();
+    private static final Logger log = Logger.getLogger(CallCenter.class);
 
     public CallCenter(final int agentCount) {
         for (int i = 0; i < agentCount; ++i) {
-            callCenter.add(new MyAgent(i)
-            );
+            callCenter.add(new MyAgent(i));
         }
     }
 
@@ -59,7 +61,7 @@ public class CallCenter implements Iterable<Agent> {
                 freeTime.set(System.currentTimeMillis() - currentFreeTime.get());
             }
             totalTime.set(System.currentTimeMillis() - start);
-            System.err.println(
+            log.debug(
                     "setFree=" + free + "\nuneff rate=" + ((double) (currentFreeTime.get())) / (double) totalTime.get()
             );
             isFree.set(free);

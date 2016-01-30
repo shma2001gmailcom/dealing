@@ -16,7 +16,6 @@ public class ErlangBTest {
     @Test
     public void test() throws FileNotFoundException {
         Scanner sc = new Scanner(new File("./src/test/resources/table"));
-        int i = 0;
         String[] parts;
         while (sc.hasNextLine()) {
             String line = sc.nextLine();
@@ -33,5 +32,6 @@ public class ErlangBTest {
                 }
             }
         }
+        sc.close();
     }
 }

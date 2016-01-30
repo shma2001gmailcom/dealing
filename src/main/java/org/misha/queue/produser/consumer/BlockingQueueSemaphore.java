@@ -10,17 +10,17 @@ import java.util.concurrent.Semaphore;
  */
 public final class BlockingQueueSemaphore<T> {
     private final List<T> queue;
-    private final Semaphore item;
-    private final Semaphore space;
+    private final Semaphore remove;
+    private final Semaphore add;
 
     public BlockingQueueSemaphore(final int size) {
         queue = new LinkedList<T>();
-        item = new Semaphore(0);
-        space = new Semaphore(size);
+        remove = new Semaphore(0);
+        add = new Semaphore(size);
     }
 
     public void add(final T element) throws InterruptedException {
-        space.acquire();
+        add.acquire();
         boolean isAdded = false;
         try {
             synchronized (this) {
@@ -28,9 +28,9 @@ public final class BlockingQueueSemaphore<T> {
             }
         } finally {
             if (!isAdded) {
-                space.release();
+                add.release();
             } else {
-                item.release();
+                remove.release();
             }
         }
     }
@@ -40,11 +40,11 @@ public final class BlockingQueueSemaphore<T> {
     }
 
     public T remove() throws InterruptedException {
-        item.acquire();
+        remove.acquire();
         final T element;
         synchronized (this) {
             element = queue.remove(queue.size() - 1);
-            space.release();
+            add.release();
         }
         return element;
     }

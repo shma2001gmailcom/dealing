@@ -1,5 +1,6 @@
 package org.misha.domain.dialer;
 
+import org.apache.log4j.Logger;
 import org.misha.domain.Connection;
 import org.misha.domain.agent.Agent;
 import org.misha.domain.agent.CallCenter;
@@ -14,6 +15,7 @@ import java.util.Random;
 public class DialerImpl implements Dialer, Runnable {
     private final CallCenter callCenter;
     private final long waitingTime;
+    private static final Logger log = Logger.getLogger(DialerImpl.class);
 
     public DialerImpl(CallCenter callCenter, long waitingTime) {
         this.callCenter = callCenter;
@@ -39,10 +41,9 @@ public class DialerImpl implements Dialer, Runnable {
                 try {
                     Thread.sleep(1);
                 } catch (InterruptedException e) {
-                    System.err.println("interrupted");
+                    log.debug("interrupted");
                     Thread.currentThread().interrupt();
                 }
-
             }
         }
     }

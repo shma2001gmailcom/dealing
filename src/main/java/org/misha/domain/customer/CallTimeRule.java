@@ -40,5 +40,4 @@ public class CallTimeRule {
         }
         return -Math.log(1 - uniform()) / lambda;
     }
-
 }

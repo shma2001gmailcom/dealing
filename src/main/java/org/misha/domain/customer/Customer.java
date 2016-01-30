@@ -36,15 +36,16 @@ public class Customer {
         if (!isBusy) {
             takeCall();
             long callStartTime = System.currentTimeMillis();
-            while (System.currentTimeMillis() - callStartTime < callTimeRule.nextTakeCallTimeout()) {
-                //do nothing
+            while (true) {
+                if (!(System.currentTimeMillis() - callStartTime < callTimeRule.nextTakeCallTimeout())) {
+                    break;
+                }
             }
             hangUp();
         }
     }
 
     void makeCall() {
-
     }
 
     public long getTimeout() {
