@@ -41,7 +41,7 @@ public class DialerImpl implements Dialer, Runnable {
                 try {
                     Thread.sleep(1);
                 } catch (InterruptedException e) {
-                    log.debug("interrupted");
+                    log.debug("Thread #" + Thread.currentThread().getId() +" has been interrupted");
                     Thread.currentThread().interrupt();
                 }
             }
